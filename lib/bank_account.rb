@@ -1,7 +1,7 @@
+require_relative "statuses.rb"
+
 class BankAccount
-    OPEN = "open"
-    CLOSED = "closed"
-    PENDING = "pending"
+
     attr_reader :name
     attr_accessor :balance
     attr_accessor :status
@@ -9,7 +9,7 @@ class BankAccount
     def initialize(name)
         @name = name
         @balance = 1000
-        @status = OPEN
+        @status = Status::OPEN
     end
 
     def deposit(amount)
@@ -21,13 +21,13 @@ class BankAccount
     end
 
     def valid?
-        if (@status == OPEN) && (@balance > 0)
+        if (@status == Status::OPEN) && (@balance > 0)
             return true
         end
         false
     end
 
     def close_account
-        @status = CLOSED
+        @status = Status::CLOSED
     end
 end
